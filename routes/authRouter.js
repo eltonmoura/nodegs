@@ -1,7 +1,11 @@
+/**
+ * Rotas que precisam de autenticação
+ */
 var express = require('express');
 var router = express.Router();
 
 const UserController = require('../src/controllers/UserController');
+const AuthController = require('../src/controllers/AuthController');
 
 // Incluir aqui as Classes Controllers que herdam de BaseController
 const crudlControllers = [
@@ -24,10 +28,6 @@ for (const c of crudlControllers) {
 }
 
 // Demais rotas
-
-// GET home page
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/api/auth/me', AuthController.me);
 
 module.exports = router;
